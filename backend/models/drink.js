@@ -7,7 +7,7 @@ const drinkSchema = new mongoose.Schema({
     maker: {type: String},        // brewery, winery, distiller, conglomerate, etc.
     image: {type: String},        // link to an image on the web, e.g.: https://www.breckbrew.com/wp-content/uploads/2021/06/avalanche-ale-lockup-can_featured.png
     description: {type: String},  // from the drink maker, etc.
-    rating: {type: Number},       // on a scale of 1 to 10
+    rating: {type: String},       // on a scale of 1 to 10
     notes: {type: String},        // textarea where user can record their thoughts on the drink
 })
 

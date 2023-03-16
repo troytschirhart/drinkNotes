@@ -6,12 +6,12 @@ const createDrink = async (req, res) => {
     const { name, category, type, maker, image, description, rating, notes } = req.body;
 
     // create a drink with it
-    const drink = await Drink.create({
+    const drinkNote = await Drink.create({
         name, category, type, maker, image, description, rating, notes
     })
 
     // respond to the new drink
-    res.json({ drink })
+    res.json({ drinkNote })
 }
 
 const fetchDrinks = async (req, res) => {

@@ -1,8 +1,6 @@
 import { create } from 'zustand';
 import axios from 'axios';
 
-const path = "http://localhost:3000/drinks/"
-
 const drinkStore = create ((set) => ({
     drinkNotes: null,
 
@@ -31,7 +29,7 @@ const drinkStore = create ((set) => ({
 
     fetchDrinks: async () => {
         // fetch the notes
-        const res = await axios.get(path);
+        const res = await axios.get(`/drinks`);
     
         // set to state
         set({
@@ -58,7 +56,7 @@ const drinkStore = create ((set) => ({
         const { createForm, drinkNotes } = drinkStore.getState();
         
         // create the drink note
-        const res = await axios.post(path, createForm);
+        const res = await axios.post(`/drinks`, createForm);
     
         // update the state
         set({
@@ -78,7 +76,7 @@ const drinkStore = create ((set) => ({
 
     deleteDrinkNote: async (_id) => {
         // delete the note
-        await axios.delete(path + _id);
+        await axios.delete(`/drinks/${_id}`);
 
         const { drinkNotes } = drinkStore.getState();
     
@@ -130,7 +128,7 @@ const drinkStore = create ((set) => ({
         } = drinkStore.getState();;
     
         // send the update request
-        const res = await axios.put(path + _id, {
+        const res = await axios.put(`/drinks/${_id}`, {
           name, category, type, maker, image, description, rating, notes
         });
     

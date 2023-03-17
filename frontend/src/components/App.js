@@ -1,27 +1,34 @@
-import { useEffect } from "react";
-import drinkStore from "../stores/drinkStore";
-import CreateForm from "./CreateForm";
-import Notes from "./Notes"
-import UpdateForm from "./UpdateForm";
-
+import NotesPage from "../pages/NotesPage";
+import LoginPage from "../pages/LoginPage";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import RequireAuth from "./RequireAuth";
+import SignupPage from "../pages/SignupPage";
+import LogoutPage from "../pages/LogoutPage";
 
 function App() {
-  const store = drinkStore();
-
-  // use effect
-  useEffect(() => {
-    store.fetchDrinks();
-  },[])
 
   return (
     <div>
+      <BrowserRouter>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/login">Login</Link></li>
+          <li><Link to="/signup">Signup</Link></li>
+          <li><Link to="/logout">Logout</Link></li>
+        </ul>
 
-      <Notes />
+        <Routes>
+          <Route index element={<RequireAuth> 
+                                  <NotesPage /> 
+                                </RequireAuth>} 
+          />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/logout" element={<LogoutPage />} />
 
-      <UpdateForm />
 
-      <CreateForm />
-
+        </Routes>
+      </BrowserRouter>     
     </div>
   );
 }

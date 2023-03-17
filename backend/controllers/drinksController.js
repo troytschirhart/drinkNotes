@@ -2,65 +2,91 @@
 const Drink = require('../models/drink');
 
 const createDrink = async (req, res) => {
-    // get the sent in data off request body
-    const { name, category, type, maker, image, description, rating, notes } = req.body;
+    try {
+        // get the sent in data off request body
+        const { name, category, type, maker, image, description, rating, notes } = req.body;
 
-    // create a drink with it
-    const drinkNote = await Drink.create({
-        name, category, type, maker, image, description, rating, notes
-    })
+        // create a drink with it
+        const drinkNote = await Drink.create({
+            name, category, type, maker, image, description, rating, notes, user: req.user._id
+        })
 
-    // respond to the new drink
-    res.json({ drinkNote })
+        // respond to the new drink
+        res.json({ drinkNote })
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(400);
+    }
 }
 
 const fetchDrinks = async (req, res) => {
-    // find all drinks
-    const allDrinks = await Drink.find();
+    try {
+        // find all drinks
+        const allDrinks = await Drink.find({user: req.user._id});
 
-    // respond with the found drinks
-    res.json({ allDrinks });
+        // respond with the found drinks
+        res.json({ allDrinks });
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(400);
+    }
 }
 
 const fetchDrink = async (req, res) => {
-    // get the id off of the url 
-    const drinkID = req.params.id;
+    try {
+        // get the id off of the url 
+        const drinkID = req.params.id;
 
-    // find the single drink using the id
-    const foundDrink = await Drink.findById(drinkID);
+        // find the single drink using the id
+        const foundDrink = await Drink.findOne({_id: drinkID, user: req.user._id });
 
-    // respond with the drink 
-    res.json({ foundDrink });
+        // respond with the drink 
+        res.json({ foundDrink });
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(400);
+    }
 }
 
 const updateDrink = async (req, res) => {
-    // get the id off of the url
-    const drinkID = req.params.id;
+    try {
+        // get the id off of the url
+        const drinkID = req.params.id;
 
-    // get the data off of the req body;
-    const { name, category, type, maker, image, description, rating, notes } = req.body
+        // get the data off of the req body;
+        const { name, category, type, maker, image, description, rating, notes } = req.body
 
-    // find and update the record
-    await Drink.findByIdAndUpdate(drinkID, {
-        name, category, type, maker, image, description, rating, notes
-    })
+        // find and update the record
+        await Drink.findOneAndUpdate({_id: drinkID, user: req.user._id}, {
+            name, category, type, maker, image, description, rating, notes
+        })
 
-    // get the updated version
-    const updatedDrink = await Drink.findById(drinkID);
+        // get the updated version
+        const updatedDrink = await Drink.findById(drinkID);
 
-    // respond with the updated record
-    res.json({ updatedDrink });
+        // respond with the updated record
+        res.json({ updatedDrink });
+
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(400);
+    }
 }
 
 const deleteDrink = async (req, res) => {
-    // get id from url
-    const drinkID = req.params.id;
+    try {
+        // get id from url
+        const drinkID = req.params.id;
 
-    // delete the record
-    const feedback = await Drink.findByIdAndDelete(drinkID);
+        // delete the record
+        const feedback = await Drink.deleteOne({id: drinkID, user: req.user._id});
 
-    // send a response
-    res.json({ success: "drink note deleted" });
+        // send a response
+        res.json({ success: "drink note deleted" });
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(400);
+    }
 }
 
 

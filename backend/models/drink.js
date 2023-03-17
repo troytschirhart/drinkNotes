@@ -9,6 +9,7 @@ const drinkSchema = new mongoose.Schema({
     description: {type: String},  // from the drink maker, etc.
     rating: {type: String},       // on a scale of 1 to 10
     notes: {type: String},        // textarea where user can record their thoughts on the drink
+    user: {type: mongoose.Schema.Types.ObjectId, ref: "User"}
 })
 
 const Drink = mongoose.model('Drink', drinkSchema);

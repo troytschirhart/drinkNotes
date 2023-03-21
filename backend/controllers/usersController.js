@@ -47,7 +47,7 @@ async function login(req, res) {
             secure: process.env.NODE_ENV === "production"
         })
 
-        // set the jwt token
+        // respond with success status
         res.sendStatus(200);
     } catch(err) {
         console.log(err);

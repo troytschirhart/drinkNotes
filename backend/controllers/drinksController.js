@@ -34,11 +34,8 @@ const fetchDrinks = async (req, res) => {
 
 const fetchDrink = async (req, res) => {
     try {
-        // get the id off of the url 
-        const drinkID = req.params.id;
-
-        // find the single drink using the id
-        const foundDrink = await Drink.findOne({_id: drinkID, user: req.user._id });
+        // find the single drink using the drink's id and the user's id 
+        const foundDrink = await Drink.findOne({_id: req.params.id, user: req.user._id });
 
         // respond with the drink 
         res.json({ foundDrink });

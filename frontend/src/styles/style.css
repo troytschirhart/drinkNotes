@@ -1,0 +1,80 @@
+
+
+.pageBackground {
+    /* padding-bottom: 100vh; */
+    height: 100vh;
+    background-image: url('../images/pexels-cottonbro-studio-5532665.jpg');
+    background-size: contain;       
+    /* background-size: cover; */
+}
+
+.titleContainer {
+    /* display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center; */
+    margin: 0 auto;
+}
+
+.navContainer {
+    /* display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center; */
+    margin: 0 auto;
+    display: block;
+    margin-top: -6.5vh;
+}
+
+.appTitle {
+    width: 50%;
+    text-align: center;
+    margin: 10px auto 0 auto;
+    background-color: #96858F;
+    opacity: .85;
+    color: white;
+    text-shadow: 1px 1px black;
+    border: 1px solid black;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 2rem;
+    border-radius: 5px;
+}
+
+.navButton {
+    display: inline-block;
+    min-width: 10vw;
+    text-align: center;
+    background-color: #96858F;
+    opacity: .85;
+    color: white;
+    text-shadow: 1px 1px black;
+    border: 1px solid black;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+.leftButton {
+    margin-left: 2vw;
+}
+
+.rightButton {
+    /* position: absolute;
+    right: 2vw; */
+    float: right;
+    margin-right: 2vw;
+}
+
+@media only screen and (max-width: 600px) {
+    .navButton {
+        margin-top: 8vh;
+    }
+    .navContainer {
+        width: 50%;        
+    }
+  }

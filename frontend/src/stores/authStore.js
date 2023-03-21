@@ -4,6 +4,8 @@ import axios from 'axios';
 const authStore = create ((set) => ({
     loggedIn: null,
 
+    failedLogin: '',
+
     loginForm: {
         email: '',
         password: '',
@@ -41,17 +43,32 @@ const authStore = create ((set) => ({
     },
 
     login: async (e) => {
-
+        try {
         const {loginForm} = authStore.getState();
 
-        const res = await axios.post('/login', loginForm);
+        await axios.post('/login', loginForm);     
 
         set({
             loggedIn: true,
+            failedLogin: "",
             loginForm: {
                 email: "",
                 password: ""
             }});
+
+        } catch (err) {
+            console.log(err);
+            set({ 
+                loggedIn: false,
+                failedLogin: "email and/or password are incorrect"
+            });
+        }
+
+        console.log("authStore:" + authStore.getState().loggedIn);
+    },
+
+    getLoggedIn: () => {
+        return authStore.getState().loggedIn;
     },
 
     checkAuth: async () => {
@@ -68,7 +85,7 @@ const authStore = create ((set) => ({
     signup: async () => {
         const {signupForm} = authStore.getState();
 
-        const res = await axios.post('/signup', signupForm);
+        const res = await axios.post('/signup', signupForm);     // try/catch block => what if signup fails?
 
         console.log(res);
 
@@ -81,7 +98,7 @@ const authStore = create ((set) => ({
     },
 
     logout: async () => {
-        await axios.get('/logout');
+        await axios.get('/logout');          // try/catch block
 
         set({loggedIn: false});
     }

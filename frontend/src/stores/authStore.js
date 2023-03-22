@@ -7,12 +7,12 @@ const authStore = create ((set) => ({
     failedLogin: '',
 
     loginForm: {
-        email: '',
+        username: '',
         password: '',
     },
 
     signupForm: {
-        email: '',
+        username: '',
         password: '',
     },
 
@@ -52,7 +52,7 @@ const authStore = create ((set) => ({
             loggedIn: true,
             failedLogin: "",
             loginForm: {
-                email: "",
+                username: "",
                 password: ""
             }});
 
@@ -60,7 +60,7 @@ const authStore = create ((set) => ({
             console.log(err);
             set({ 
                 loggedIn: false,
-                failedLogin: "email and/or password are incorrect"
+                failedLogin: "username and/or password are incorrect"
             });
         }
 
@@ -83,24 +83,30 @@ const authStore = create ((set) => ({
     },
 
     signup: async () => {
-        const {signupForm} = authStore.getState();
+        try {
+            const {signupForm} = authStore.getState();
 
-        const res = await axios.post('/signup', signupForm);     // try/catch block => what if signup fails?
+            const res = await axios.post('/signup', signupForm);     
 
-        console.log(res);
-
-        set({
-            signupForm: {
-                email: "",
-                password: ""
-            }
-        })
+            set({
+                signupForm: {
+                    username: "",
+                    password: ""
+                }
+            })
+            return res;
+        } catch (err) {
+            return err;
+        }
     },
 
     logout: async () => {
-        await axios.get('/logout');          // try/catch block
-
-        set({loggedIn: false});
+        try {
+            await axios.get('/logout');          
+            set({loggedIn: false});
+        } catch (err) {
+            console.log(err);
+        }
     }
 
 

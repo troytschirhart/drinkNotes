@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 
-export default function FrontHeader() {
+export default function HomeHeader() {
     return (
         <>
             <div className="titleContainer">
@@ -9,8 +9,8 @@ export default function FrontHeader() {
 
 
             <div className="navContainer">
-                <Link to="/signup" className="navButton leftButton">Signup</Link>
-                <Link to="/login" className="navButton rightButton">Login</Link>
+                <Link to="/frontpageloggedin" className="navButton leftButton">Front</Link>
+                <Link to="/logout" className="navButton rightButton">Logout</Link>
             </div>
       </>
     )

@@ -1,10 +1,10 @@
 import {Link} from 'react-router-dom'
 
-export default function CreateUserHeader() {
+export default function LogoutHeader() {
     return (
         <>
             <div className="titleContainer">
-                <h2 className="appTitle">Drink Notes</h2>
+                <h1 className="appTitle">Drink Notes</h1>
             </div>
 
 

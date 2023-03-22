@@ -1,11 +1,11 @@
-import FrontHeader from '../headers/FrontHeader'
+import FrontHeaderLoggedIn from '../headers/FrontHeaderLoggedIn'
 
-export default function FrontPage() {
+export default function FrontPageLoggedIn() {
 
 
     return (
         <div>
-            <FrontHeader />
+            <FrontHeaderLoggedIn />
 
             <div className='appExplanation'>
                 <h2>Drink Notes Application</h2>

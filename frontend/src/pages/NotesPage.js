@@ -16,8 +16,6 @@ export default function NotesPage() {
     return (
         <div >
             <Notes />
-            <UpdateForm />
-            <CreateForm />
         </div>
     )
 }

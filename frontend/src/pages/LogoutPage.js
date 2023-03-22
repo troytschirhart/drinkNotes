@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import authStore from "../stores/authStore"
+import LogoutHeader from "../headers/LogoutHeader";
 
 export default function LogoutPage() {
     const store = authStore();
@@ -9,8 +10,13 @@ export default function LogoutPage() {
     }, [])
 
     return (
-        <div className="pageBackground">
-            <h2>You are now logged out</h2>
+        <div>
+
+            <LogoutHeader />
+            
+            <div className='appExplanation'>
+                <h2>You are now logged out.</h2>
+            </div>
         </div>
     )
 }

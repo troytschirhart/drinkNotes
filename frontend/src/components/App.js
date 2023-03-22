@@ -5,7 +5,10 @@ import RequireAuth from "./RequireAuth";
 import SignupPage from "../pages/SignupPage";
 import LogoutPage from "../pages/LogoutPage";
 import FrontPage from "../pages/FrontPage";
+import HomePage from "../pages/HomePage"
+import FrontPageLoggedIn from "../pages/FrontPageLoggedIn"
 import "../styles/style.css";
+import CreateNotePage from "../pages/CreateNotePage";
 
 function App() {
 
@@ -36,15 +39,26 @@ function App() {
 
           <Routes>
 
-          <Route index element={<FrontPage /> } 
+            {/* not logged in front page */}
+            <Route index element={<FrontPage /> } />
 
-            // {/* <Route index element={<RequireAuth> 
-            //                         <NotesPage /> 
-            //                       </RequireAuth>}  */}
-            />
-            <Route path="/login" element={<LoginPage />} />
+            {/* user routes  */}
             <Route path="/signup" element={<SignupPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/logout" element={<LogoutPage />} />
+
+            {/* notes routes  */}
+            <Route path="/createnote" element={<CreateNotePage />} />
+            <Route path="/notespage" element={<RequireAuth> 
+                                     <NotesPage /> 
+                                   </RequireAuth>}  
+            />
+            
+
+            <Route path="/homepage" element={<HomePage />} />
+            <Route path="/frontpageloggedin" element={<FrontPageLoggedIn />} />
+
+            
 
 
           </Routes>

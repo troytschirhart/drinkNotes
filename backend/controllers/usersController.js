@@ -5,17 +5,28 @@ const User = require("../models/user");
 
 async function signup(req, res) {
     try {
-        // get the email and password off req body
-        const { email, password } = req.body;
+        // get the username and password off req body
+        const { username, password } = req.body;
 
-        // hash password
-        const hashedPassword = bcrypt.hashSync(password, 8);
+        // check the database to see if the username is already in use
+        const existingUser = await User.findOne({ username });
 
-        // create a user with the data
-        await User.create({email, password: hashedPassword});
-        
-        // response
-        res.sendStatus(200);
+        // if so, then return an error 
+        if (existingUser) {
+            return res.sendStatus(432);
+
+        // if not, then create a new user
+        } else {
+
+            // hash password
+            const hashedPassword = bcrypt.hashSync(password, 8);
+
+            // create a user with the data
+            await User.create({username, password: hashedPassword});
+            
+            // response
+            res.sendStatus(200);
+        }
     } catch(err) {
         console.log(err);
         return res.sendStatus(400)
@@ -24,11 +35,11 @@ async function signup(req, res) {
 
 async function login(req, res) {
     try {
-        // get the email and password off of req body
-        const {email, password} = req.body;
+        // get the username and password off of req body
+        const {username, password} = req.body;
 
-        // find the user with the requested email
-        const user = await User.findOne({ email })
+        // find the user with the requested username
+        const user = await User.findOne({ username })
         if (!user) return res.sendStatus(401);
 
         // compare sent in password with found user password hash

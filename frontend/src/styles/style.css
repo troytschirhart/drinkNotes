@@ -3,6 +3,7 @@
 .pageBackground {
     /* padding-bottom: 100vh; */
     height: 100vh;
+    padding-top: 10px;
     background-image: url('../images/pexels-cottonbro-studio-5532665.jpg');
     background-size: contain;       
     /* background-size: cover; */
@@ -68,6 +69,76 @@
     right: 2vw; */
     float: right;
     margin-right: 2vw;
+}
+
+.appExplanation {
+    color: white;
+    border: 1px solid black;
+    margin: 50px auto 0 auto;
+    text-align: center;
+    background-color: #579bb1;
+    padding: 0 20px 10px 20px;
+    width: 50%;
+    height: 20%;
+    min-height: 200px;
+    border-radius: 5px;
+    text-shadow: 1px 1px black;
+    opacity: .9;
+}
+
+.createUser {
+    display: block;
+    color: white;
+    border: 1px solid black;
+    margin: 50px auto 0 auto;
+    text-align: center;
+    background-color: #579bb1;
+    padding: 0 20px 10px 20px;
+    width: 50%;
+    height: 20%;
+    min-height: 200px;
+    border-radius: 5px;
+    text-shadow: 1px 1px black;
+    opacity: .9;
+}
+
+.formInput {
+    display: block;
+    padding-bottom: 10px;
+}
+
+.createUserLabel {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+}
+
+.createUserInput {
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 50%;
+}
+
+.createUserButton {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.drinkCard {
+    color: white;
+    border: 1px solid gold;
+    margin: 5px;
+    text-align: center;
+    background-color: #9099A2;
+    padding: 0;
+    width: 20%;
+    height: 20%;
+    min-width: 350px;
+    height: 550px;
+    border-radius: 5px;
+    text-shadow: 1px 1px black;
+    opacity: .95;
 }
 
 @media only screen and (max-width: 600px) {

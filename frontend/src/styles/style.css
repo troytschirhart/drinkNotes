@@ -1,27 +1,17 @@
 
 
 .pageBackground {
-    /* padding-bottom: 100vh; */
     height: 100vh;
     padding-top: 10px;
     background-image: url('../images/pexels-cottonbro-studio-5532665.jpg');
     background-size: contain;       
-    /* background-size: cover; */
 }
 
 .titleContainer {
-    /* display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: center; */
     margin: 0 auto;
 }
 
 .navContainer {
-    /* display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center; */
     margin: 0 auto;
     display: block;
     margin-top: -6.5vh;
@@ -86,6 +76,41 @@
     opacity: .9;
 }
 
+.mainMenu {
+    color: white;
+    border: 1px solid black;
+    margin: 50px auto 0 auto;
+    text-align: center;
+    background-color: #579bb1;
+    padding: 0 20px 10px 20px;
+    width: 50%;
+    height: 20%;
+    min-height: 200px;
+    border-radius: 5px;
+    text-shadow: 1px 1px black;
+    opacity: .9;
+    display: flex;
+    flex-flow: column;  
+}
+
+.menuButton {
+    min-width: 5vw;
+    text-align: center;
+    background-color: #96858F;
+    opacity: .85;
+    color: white;
+    text-shadow: 1px 1px black;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    text-decoration: none;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
 .createUser {
     display: block;
     color: white;
@@ -123,6 +148,65 @@
     padding: 10px;
     border-radius: 5px;
     border: 1px solid black;
+}
+
+.createNoteForm {
+    display: flex;
+    flex-flow: column;
+}
+
+.createNoteLabel {
+    display: inline-block;
+    width: 8vw;
+    text-align: right;
+    vertical-align: top;
+}
+
+.createNoteButton {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    min-width: 10vw;
+    margin: 0 auto;
+}
+
+.containerContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.displayItem {
+    display: block;
+}
+
+.drinkImage {
+    max-height: 200px;
+}
+
+.viewNoteButton {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid gold;
+    min-width: 10vw;
+    margin: 10px 5px 10px 5px;
+
+}
+
+.oneDrinkCard {
+    display: block;
+    color: white;
+    border: 1px solid gold;
+    margin: 50px auto 0 auto;
+    text-align: center;
+    background-color: #9099A2;
+    padding: 0 20px 10px 20px;
+    width: 50%;
+    height: 20%;
+    min-height: 200px;
+    border-radius: 5px;
+    text-shadow: 1px 1px black;
+    opacity: .9;
 }
 
 .drinkCard {

@@ -9,6 +9,8 @@ import HomePage from "../pages/HomePage"
 import FrontPageLoggedIn from "../pages/FrontPageLoggedIn"
 import "../styles/style.css";
 import CreateNotePage from "../pages/CreateNotePage";
+import ViewOneNotePage from "../pages/ViewOneNotePage";
+import EditNotePage from "../pages/EditNotePage";
 
 function App() {
 
@@ -53,6 +55,8 @@ function App() {
                                      <NotesPage /> 
                                    </RequireAuth>}  
             />
+            <Route path="/onenote" element={<ViewOneNotePage />} />
+            <Route path="/editnote" element={<EditNotePage />} />
             
 
             <Route path="/homepage" element={<HomePage />} />

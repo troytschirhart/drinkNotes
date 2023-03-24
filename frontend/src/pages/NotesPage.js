@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import CreateForm from "../components/CreateForm";
+import CreateForm from "../components/CreateNoteForm";
 import Notes from "../components/Notes";
 import UpdateForm from "../components/UpdateForm";
 import drinkStore from "../stores/drinkStore";

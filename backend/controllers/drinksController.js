@@ -76,7 +76,7 @@ const deleteDrink = async (req, res) => {
         const drinkID = req.params.id;
 
         // delete the record
-        const feedback = await Drink.deleteOne({id: drinkID, user: req.user._id});
+        const feedback = await Drink.deleteOne({_id: drinkID, user: req.user._id});
 
         // send a response
         res.json({ success: "drink note deleted" });

@@ -1,16 +1,22 @@
 import drinkStore from "../stores/drinkStore"
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function UpdateForm () {
 
-    const store = drinkStore(store => {
-        return { handleUpdateFieldChange: store.handleUpdateFieldChange, updateForm: store.updateForm, updateDrinkNote: store.updateDrinkNote }
-    })
+    const store = drinkStore();
 
-    if (!store.updateForm._id) return <></>
+    const { state } = useLocation();
+    const { note } = state || {};
+
+    console.log("note: " + JSON.stringify(note));
+
+    useEffect(() => {
+        store.toggleUpdate(note)
+    },[]);
 
     return (
         <div>
-            <h2>Update Drink Note</h2>
             <form onSubmit={store.updateDrinkNote}>
             name: <input onChange={store.handleUpdateFieldChange} value={store.updateForm.name} name="name" />
             category: <input onChange={store.handleUpdateFieldChange} value={store.updateForm.category} name="category" />

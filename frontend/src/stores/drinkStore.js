@@ -35,6 +35,10 @@ const drinkStore = create ((set) => ({
         set({
             drinkNotes: res.data.allDrinks
         })
+
+        const {drinkNotes} = drinkStore.getState();
+
+        console.log(drinkNotes);
     },
 
     updateCreateFormField: (e) => {
@@ -51,40 +55,53 @@ const drinkStore = create ((set) => ({
     },
 
     createDrinkNote: async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
 
-        const { createForm, drinkNotes } = drinkStore.getState();
+        try {
+            // get the createForm and drinkNotes values from state
+            const { createForm, drinkNotes } = drinkStore.getState();
+            
+            // create the drink note
+            const res = await axios.post(`/drinks`, createForm); 
+            
+            console.log("createDrinkNote res.data.drinkNote: " + JSON.stringify(res.data.drinkNote));
         
-        // create the drink note
-        const res = await axios.post(`/drinks`, createForm);              // try/catch block
-    
-        // update the state
-        set({
-            drinkNotes: [...drinkNotes, res.data.drinkNote],
-            createForm: {
-                name: "", 
-                category: "", 
-                type: "", 
-                maker: "", 
-                image: "", 
-                description: "", 
-                rating: "", 
-                notes: ""
-            }
-        })
+            // update the state for drinkNotes and clear the form 
+            set({
+                drinkNotes: [...drinkNotes, res.data.drinkNote],
+                createForm: {
+                    name: "", 
+                    category: "", 
+                    type: "", 
+                    maker: "", 
+                    image: "", 
+                    description: "", 
+                    rating: "", 
+                    notes: ""
+                }
+            })
+
+            return res.data.drinkNote; 
+        } catch (err) {
+            console.log(err);
+        }
     },
 
     deleteDrinkNote: async (_id) => {
+        // const { drinkNotes } = drinkStore.getState();
         // delete the note
         await axios.delete(`/drinks/${_id}`);              // try/catch block
 
         const { drinkNotes } = drinkStore.getState();
     
+        
         // update state
         const newDrinkNotes = drinkNotes.filter((note) => {
           return note._id !== _id;
         })
     
+        console.log("drinkStore.deleteDrinkNote _id: " + _id + " drinkNotes: " + drinkNotes);
+        
         set({ drinkNotes: newDrinkNotes });
     },
 

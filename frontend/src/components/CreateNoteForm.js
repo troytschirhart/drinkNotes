@@ -4,13 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function CreateNoteForm() {
     const navigate = useNavigate();
 
-    const store = drinkStore(store => {
-        return { 
-                updateCreateFormField: store.updateCreateFormField, 
-                createForm: store.createForm, 
-                createDrinkNote: store.createDrinkNote,
-            }
-    })
+    const store = drinkStore();
 
     const handleCreateNote = async (e) => {
         e.preventDefault();

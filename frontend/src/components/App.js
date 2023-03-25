@@ -19,25 +19,6 @@ function App() {
 
         <BrowserRouter>
 
-        
-
-        {/* <div className="titleContainer">
-          <h2 className="appTitle">Drink Notes</h2>
-        </div>
-
-        <div className="navContainer">
-          <Link to="/signup" className="navButton leftButton">Signup</Link>
-          <Link to="/login" className="navButton rightButton">Login</Link>
-        </div> */}
-
-
-
-          {/* <nav>
-            <Link to="/">Home</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
-            <Link to="/logout">Logout</Link>
-          </nav> */}
 
           <Routes>
 
@@ -51,18 +32,19 @@ function App() {
 
             {/* notes routes  */}
             <Route path="/createnote" element={<CreateNotePage />} />
-            <Route path="/notespage" element={<RequireAuth> 
+            {/* <Route path="/notespage" element={<RequireAuth> 
                                      <NotesPage /> 
                                    </RequireAuth>}  
-            />
+            /> */}
+
+            <Route path="/notespage" element={<NotesPage /> } />  
+
             <Route path="/onenote" element={<ViewOneNotePage />} />
             <Route path="/editnote" element={<EditNotePage />} />
             
 
             <Route path="/homepage" element={<HomePage />} />
-            <Route path="/frontpageloggedin" element={<FrontPageLoggedIn />} />
-
-            
+            <Route path="/frontpageloggedin" element={<FrontPageLoggedIn />} />       
 
 
           </Routes>

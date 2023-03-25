@@ -101,7 +101,7 @@ const drinkStore = create ((set) => ({
         })
     
         console.log("drinkStore.deleteDrinkNote _id: " + _id + " drinkNotes: " + drinkNotes);
-        
+
         set({ drinkNotes: newDrinkNotes });
     },
 
@@ -137,7 +137,7 @@ const drinkStore = create ((set) => ({
     },
 
     updateDrinkNote: async(e) => {
-        e.preventDefault();
+        // e.preventDefault();
     
         const { 
             updateForm: {_id, name, category, type, maker, image, description, rating, notes},
@@ -170,6 +170,8 @@ const drinkStore = create ((set) => ({
                 notes: ""
             }
         })
+
+        return res.data.updatedDrink;
     },
 
 

@@ -32,14 +32,14 @@ export default function ViewOneNotePage () {
             <div className="containerContainer">
                 <div key={note._id} className="oneDrinkCard">
                     <div>
-                        <h2>{note.name}</h2>
-                        <h2>{note.category}</h2>
-                        <h2>{note.type}</h2>
-                        <h2>{note.maker}</h2>
-                        <img className="drinkImage" src={note.image} alt=""/>
-                        <h3>{note.description}</h3>
-                        <h3>{note.rating}</h3> 
-                        <h3>{note.notes}</h3>
+                        {note.name && <h2>Name: {note.name}</h2>}
+                        {note.category && <h2>Category: {note.category}</h2>}
+                        {note.type && <h2>Type: {note.type}</h2>}
+                        {note.maker && <h2>Maker: {note.maker}</h2>}
+                        {note.image && <img className="drinkImage" src={note.image} alt=""/>}
+                        {note.description && <h2>Description: {note.description}</h2>}
+                        {note.rating && <h2>Rating: {note.rating}</h2>}
+                        {note.notes && <h2>Notes: {note.notes}</h2>}
                     </div>
 
 

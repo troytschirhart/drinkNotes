@@ -36,7 +36,12 @@ export default function ViewOneNotePage () {
                         {note.category && <h2>Category: {note.category}</h2>}
                         {note.type && <h2>Type: {note.type}</h2>}
                         {note.maker && <h2>Maker: {note.maker}</h2>}
-                        {note.image && <img className="drinkImage" src={note.image} alt=""/>}
+
+                        {note.image
+                            ? <img src={note.image} alt="drink" className="drinkCardImage" />
+                            : <img src="https://cdn.pixabay.com/photo/2022/06/12/21/48/glass-7258948__480.png" alt="drink" className="drinkCardImage" />
+                        }    
+
                         {note.description && <h2>Description: {note.description}</h2>}
                         {note.rating && <h2>Rating: {note.rating}</h2>}
                         {note.notes && <h2>Notes: {note.notes}</h2>}

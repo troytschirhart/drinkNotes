@@ -8,7 +8,11 @@ export default function FrontPage() {
     const store = drinkStore();
 
     useEffect(() => {
-        store.fetchDrinks()
+        async function fetchData() {
+            await store.fetchDrinks();
+            console.log("drinks: " + JSON.stringify(store.drinkNotes));
+        }
+        fetchData();
     },[])
 
     return (

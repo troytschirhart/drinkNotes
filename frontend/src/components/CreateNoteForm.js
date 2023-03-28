@@ -11,7 +11,6 @@ export default function CreateNoteForm() {
         
         try {
             const note = await store.createDrinkNote();
-            console.log("handleCreateNote res: " + JSON.stringify(note));
             navigate("/onenote", {state: {note}});
 
         } catch (err) {
@@ -90,9 +89,10 @@ export default function CreateNoteForm() {
                 </div>
 
                 <div className="formInput">
-                    <label className="createNoteLabel" htmlFor="rating">Rating:&nbsp;&nbsp;</label>
+                    <label className="createNoteLabel" htmlFor="rating">Rating (1-10):&nbsp;&nbsp;</label>
                     <input 
                         className="createUserInput"
+                        pattern="^([1-9]|10)$"
                         type="text" 
                         name="rating" 
                         value={store.createForm.rating}

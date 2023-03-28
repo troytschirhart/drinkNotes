@@ -1,7 +1,7 @@
 import NotesPage from "../pages/NotesPage";
 import LoginPage from "../pages/LoginPage";
-import { BrowserRouter, Routes, Route, Link, } from "react-router-dom";
-import RequireAuth from "./RequireAuth";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import RequireAuth from "./RequireAuth";
 import SignupPage from "../pages/SignupPage";
 import LogoutPage from "../pages/LogoutPage";
 import FrontPage from "../pages/FrontPage";
@@ -23,7 +23,7 @@ function App() {
           <Routes>
 
             {/* not logged in front page */}
-            <Route index element={<FrontPage /> } />
+            <Route exact path="/" element={<FrontPage /> } />
 
             {/* user routes  */}
             <Route path="/signup" element={<SignupPage />} />
@@ -32,13 +32,7 @@ function App() {
 
             {/* notes routes  */}
             <Route path="/createnote" element={<CreateNotePage />} />
-            {/* <Route path="/notespage" element={<RequireAuth> 
-                                     <NotesPage /> 
-                                   </RequireAuth>}  
-            /> */}
-
             <Route path="/notespage" element={<NotesPage /> } />  
-
             <Route path="/onenote" element={<ViewOneNotePage />} />
             <Route path="/editnote" element={<EditNotePage />} />
             

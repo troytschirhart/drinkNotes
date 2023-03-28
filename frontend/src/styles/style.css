@@ -193,6 +193,28 @@
 
 }
 
+.containerContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.drinkContainer {
+    color: white;
+    border: 1px solid gold;
+    margin: 5px;
+    text-align: center;
+    background-color: #9099A2;
+    padding: 0;
+    width: 20%;
+    height: 20%;
+    min-width: 350px;
+    height: 550px;
+    border-radius: 5px;
+    text-shadow: 1px 1px black;
+    opacity: .95;
+  }
+
 .oneDrinkCard {
     display: block;
     color: white;
@@ -223,6 +245,22 @@
     border-radius: 5px;
     text-shadow: 1px 1px black;
     opacity: .95;
+}
+
+.drinkCardImage {
+    max-width: 250px;
+    height: 350px;
+    /* width: auto;
+    height: auto; */
+    padding: 0;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.createUserInput {
+    font-family: arial;
 }
 
 @media only screen and (max-width: 600px) {

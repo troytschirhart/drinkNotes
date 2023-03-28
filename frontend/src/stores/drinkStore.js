@@ -29,8 +29,10 @@ const drinkStore = create ((set) => ({
 
     fetchDrinks: async () => {
         // fetch the notes
+        console.log("about to get drinks");
         const res = await axios.get(`/drinks`);              // try/catch
-    
+        console.log("res: " + JSON.stringify(res));
+        
         // set to state
         set({
             drinkNotes: res.data.allDrinks

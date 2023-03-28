@@ -44,18 +44,19 @@ const authStore = create ((set) => ({
 
     login: async (e) => {
         try {
-        const {loginForm} = authStore.getState();
+            const {loginForm} = authStore.getState();
 
-        await axios.post('/login', loginForm);     
+            const res = await axios.post('/login', loginForm);     
 
-        set({
-            loggedIn: true,
-            failedLogin: "",
-            loginForm: {
-                username: "",
-                password: ""
-            }});
+            set({
+                loggedIn: true,
+                failedLogin: "",
+                loginForm: {
+                    username: "",
+                    password: ""
+                }});
 
+            return res
         } catch (err) {
             console.log(err);
             set({ 
@@ -64,7 +65,6 @@ const authStore = create ((set) => ({
             });
         }
 
-        console.log("authStore:" + authStore.getState().loggedIn);
     },
 
     getLoggedIn: () => {

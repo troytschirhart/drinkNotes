@@ -101,7 +101,7 @@ export default function UpdateForm () {
                 </div>
 
                 <div className="formInput">
-                    <label className="createNoteLabel" htmlFor="rating">Rating:&nbsp;&nbsp;</label>
+                    <label className="createNoteLabel" htmlFor="rating">Rating (1-10):&nbsp;&nbsp;</label>
                     <input 
                         className="createUserInput"
                         type="text" 
@@ -115,6 +115,7 @@ export default function UpdateForm () {
                     <label className="createNoteLabel" htmlFor="notes">Notes:&nbsp;&nbsp;</label>
                     <textarea 
                         className="createUserInput"
+                        pattern="^([1-9]|10)$"
                         type="text" 
                         name="notes" 
                         value={store.updateForm.notes}

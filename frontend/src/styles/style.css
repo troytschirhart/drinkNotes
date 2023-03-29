@@ -1,8 +1,9 @@
 
 
 .pageBackground {
-    height: 100vh;
+    min-height: 100vh;;
     padding-top: 10px;
+    padding-bottom: 10px;
     background-image: url('../images/pexels-cottonbro-studio-5532665.jpg');
     background-size: contain;       
 }
@@ -142,6 +143,7 @@
     border: 1px solid black;
     border-radius: 3px;
     width: 50%;
+    font-family: arial;
 }
 
 .createUserButton {
@@ -157,9 +159,45 @@
 
 .createNoteLabel {
     display: inline-block;
-    width: 8vw;
+    /* width: 8vw; */
+    min-width: 7vw;
     text-align: right;
     vertical-align: top;
+
+
+    border: 1px solid purple;
+}
+
+table {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.tdLabel {
+    text-align: right;
+    min-width: 12vw;
+    word-break: keep-all;
+}
+
+.tdInput {
+    width: 80%
+}
+
+label {
+    white-space: nowrap;
+}
+
+select {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.createNoteInput {
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 98%;
+    font-family: arial;
 }
 
 .createNoteButton {
@@ -174,6 +212,23 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+}
+
+.searchTable {
+    width: 98%;
+    border: 1px solid black;
+    border-radius: 3px;
+    /* background-color: #579bb1; */
+    background-color: #9099A2;
+    /* background-color: rgba(144, 153, 162, 1); */
+}
+
+.searchCheckbox {
+    text-align: right;
+}
+
+.searchLabel {
+    text-align: left;
 }
 
 .displayItem {
@@ -259,15 +314,21 @@
     box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
 }
 
-.createUserInput {
-    font-family: arial;
-}
-
 @media only screen and (max-width: 600px) {
     .navButton {
         margin-top: 8vh;
     }
     .navContainer {
         width: 50%;        
+    }
+    .inputRow {
+        display: flex;
+        flex-flow: column;
+    }
+    .tdLabel {
+        text-align: center;
+    }
+    .tdInput {
+        width: 98%;
     }
   }

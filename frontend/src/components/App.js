@@ -11,6 +11,7 @@ import "../styles/style.css";
 import CreateNotePage from "../pages/CreateNotePage";
 import ViewOneNotePage from "../pages/ViewOneNotePage";
 import EditNotePage from "../pages/EditNotePage";
+import SearchPage from "../pages/SearchPage";
 
 function App() {
 
@@ -35,6 +36,8 @@ function App() {
             <Route path="/notespage" element={<NotesPage /> } />  
             <Route path="/onenote" element={<ViewOneNotePage />} />
             <Route path="/editnote" element={<EditNotePage />} />
+
+            <Route path="/searchpage" element={<SearchPage />} />
             
 
             <Route path="/homepage" element={<HomePage />} />

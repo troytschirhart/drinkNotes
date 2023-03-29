@@ -17,7 +17,8 @@ export default function Note({note}) {
             <h3>{note.maker}</h3>
             {note.image
                 ? <img src={note.image} alt="drink" className="drinkCardImage" />
-                : <img src="https://cdn.pixabay.com/photo/2022/06/12/21/48/glass-7258948__480.png" alt="drink" className="drinkCardImage" />
+                : <img src="https://cdn.pixabay.com/photo/2018/01/27/16/27/drink-3111583__480.jpg" alt="drink" className="drinkCardImage" />
+                // <img src="https://cdn.pixabay.com/photo/2022/06/12/21/48/glass-7258948__480.png" alt="drink" className="drinkCardImage" />
             }           
             <p>Click this card for more details on this drink.</p>
       </div>

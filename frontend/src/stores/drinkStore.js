@@ -4,9 +4,13 @@ import axios from 'axios';
 const drinkStore = create ((set) => ({
     drinkNotes: null,
 
+    foundNotes: null,
+
+    showFound: false,
+
     createForm: {
         name: "", 
-        category: "", 
+        category: "Other", 
         type: "", 
         maker: "", 
         image: "", 
@@ -27,12 +31,22 @@ const drinkStore = create ((set) => ({
         notes: ""
     },
 
+    searchForm: {
+        name: "", 
+        category: "All", 
+        type: "", 
+        maker: "", 
+        image: "", 
+        description: "", 
+        rating: "", 
+        notes: ""
+    },
+
     fetchDrinks: async () => {
         // fetch the notes
         console.log("about to get drinks");
         const res = await axios.get(`/drinks`);              // try/catch
-        console.log("res: " + JSON.stringify(res));
-        
+
         // set to state
         set({
             drinkNotes: res.data.allDrinks
@@ -41,6 +55,26 @@ const drinkStore = create ((set) => ({
         const {drinkNotes} = drinkStore.getState();
 
         console.log(drinkNotes);
+    },
+
+    searchDrinkNotes: async () => {
+
+        const {searchForm} = drinkStore.getState();
+
+        if (searchForm.category === "All") {
+            searchForm.category = "";
+        }
+
+        const res = await axios.put(`/drinks/search`, searchForm);
+
+        console.log("res.data.foundDrinks: " + res.data.foundDrinks);
+
+        set({
+            foundNotes: res.data.foundDrinks,
+            showFound: true
+        })
+
+        return res.data.foundDrinks
     },
 
     updateCreateFormField: (e) => {
@@ -53,6 +87,27 @@ const drinkStore = create ((set) => ({
                     [name]: value
                 }
             }
+        })
+    },
+
+    updateSearchFormField: (e) => {
+        const {name, value} = e.target;
+
+        // console.log(name + ": " + value);
+
+        set((state) => {
+            return {
+                searchForm: {
+                    ...state.searchForm,
+                    [name]: value
+                }
+            }
+        })
+    },
+
+    setShow: (value) => {
+        set({
+            showFound: value
         })
     },
 
@@ -73,7 +128,7 @@ const drinkStore = create ((set) => ({
                 drinkNotes: [...drinkNotes, res.data.drinkNote],
                 createForm: {
                     name: "", 
-                    category: "", 
+                    category: "Other", 
                     type: "", 
                     maker: "", 
                     image: "", 

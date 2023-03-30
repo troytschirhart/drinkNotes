@@ -3,11 +3,6 @@ import SearchForm from "../components/SearchForm"
 
 export default function SearchPage()  {
 
-
-    const handleSubmit = () => {
-
-    }
-
     return (
 
         <div>

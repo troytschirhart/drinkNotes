@@ -37,11 +37,14 @@ app.post('/login', usersController.login);
 app.get('/logout', usersController.logout);
 app.get('/check-auth', requireAuth, usersController.checkAuth);
 
-app.post('/drinks', requireAuth, drinksController.createDrink)           // Create a drink note
-app.get('/drinks', requireAuth, drinksController.fetchDrinks)            // Read all drink notes
-app.get('/drinks/:id', requireAuth, drinksController.fetchDrink)         // Read a single drink note
-app.put('/drinks/:id', requireAuth, drinksController.updateDrink)        // Update a drink note
-app.delete('/drinks/:id', requireAuth, drinksController.deleteDrink)     // Delete a drink note
+app.post('/drinks', requireAuth, drinksController.createDrink)             // Create a drink note
+app.get('/drinks', requireAuth, drinksController.fetchDrinks)              // Read all drink notes
+
+app.put('/drinks/search', requireAuth, drinksController.searchDrinks) // Search drink notes
+
+app.get('/drinks/:id', requireAuth, drinksController.fetchDrink)           // Read a single drink note
+app.put('/drinks/:id', requireAuth, drinksController.updateDrink)          // Update a drink note
+app.delete('/drinks/:id', requireAuth, drinksController.deleteDrink)       // Delete a drink note
 
 // start the server
 app.listen(PORT, () => {

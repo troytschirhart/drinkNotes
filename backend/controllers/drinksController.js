@@ -32,6 +32,68 @@ const fetchDrinks = async (req, res) => {
     }
 }
 
+const searchDrinks = async (req, res) => {
+    // let searchObj = {...req.params.searchForm, user: req.user._id};
+    // console.log("searchObj: " + JSON.stringify(searchObj));
+    const { name, category, type, maker, image, description, rating, notes } = req.body
+
+    console.log("req.body: " + JSON.stringify(req.body));
+
+    try {
+        console.log("category: " + category);
+        // find all drinks
+        // const foundDrinks = await Drink.find({user: req.user._id, category: category});
+
+        let searchObject = {user: req.user._id};
+        if (name !== "") {
+            searchObject.name = name;
+        }
+        if (category !== "") {
+            searchObject.category = category;
+        }
+        if (type !== "") {
+            searchObject.type = type;
+        }
+        if (maker !== "") {
+            searchObject.maker = maker;
+        }
+        if (image !== "") {
+            searchObject.image = image;
+        }
+        if (description !== "") {
+            searchObject.description = description;
+        }
+        if (rating !== "") {
+            searchObject.rating = rating;
+        }
+        if (notes !== "") {
+            searchObject.notes = notes;
+        }
+
+        console.log("searchObject: " + JSON.stringify(searchObject));
+
+        const foundDrinks = await Drink.find(searchObject);
+
+        // const foundDrinks = await Drink.find({
+        //     user: req.user._id, 
+        //     name: name,
+        //     category: category,
+        //     type: type,
+        //     maker: maker,
+        //     image: image,
+        //     description: description,
+        //     rating: rating,
+        //     notes: notes    
+        // });
+
+        // respond with the found drinks
+        res.json({ foundDrinks });
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(400);
+    }
+}
+
 const fetchDrink = async (req, res) => {
     try {
         // find the single drink using the drink's id and the user's id 
@@ -88,5 +150,5 @@ const deleteDrink = async (req, res) => {
 
 
 module.exports = {
-    createDrink, fetchDrinks, fetchDrink, updateDrink, deleteDrink
+    createDrink, fetchDrinks, fetchDrink, updateDrink, deleteDrink, searchDrinks
 }

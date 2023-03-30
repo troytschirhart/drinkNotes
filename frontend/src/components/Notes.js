@@ -6,8 +6,19 @@ import FrontHeaderLoggedIn from "../headers/FrontHeaderLoggedIn"
 export default function Notes () {
     const store = drinkStore();
 
-    const checkStore = authStore();
-    console.log("notes component: " + checkStore.loggedIn);
+    // const checkStore = authStore();
+    // console.log("notes component: " + checkStore.loggedIn);
+
+    let notesToShow;
+
+    if (store.showFound) {
+      notesToShow = store.foundNotes;
+    } else {
+      notesToShow = store.drinkNotes;
+    }
+
+    console.log("store.showFound: " + store.showFound);
+    console.log("notesToShow: " + JSON.stringify(notesToShow));
 
     return (
       <div>
@@ -15,8 +26,8 @@ export default function Notes () {
         <FrontHeaderLoggedIn />
 
         <div className="containerContainer">
-          {store.drinkNotes &&
-            store.drinkNotes.map((note) => {
+          {notesToShow &&
+            notesToShow.map((note) => {
               return (
                   <Note key={note._id} note={note} />
               )

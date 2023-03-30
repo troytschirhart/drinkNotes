@@ -22,6 +22,7 @@ export default function CreateNoteForm() {
         <div>
             <form onSubmit={handleCreateNote} className="createNoteForm" >
                 <table>
+                    <tbody>
                     <tr className="inputRow">
                         <td className="tdLabel">Name:&nbsp;&nbsp;</td>
                         <td className="tdInput">
@@ -38,7 +39,7 @@ export default function CreateNoteForm() {
                     <tr className="inputRow">
                         <td className="tdLabel">Category:&nbsp;&nbsp;</td>
                         <td className="tdInput">
-                            <select onChange={store.updateCreateFormField} name="category" >
+                            <select defaultValue={"Other"} onChange={store.updateCreateFormField} name="category" >
                                 <option value="Beer">Beer</option>
                                 <option value="Wine">Wine</option>
                                 <option value="Cocktail">Cocktail</option>
@@ -49,7 +50,7 @@ export default function CreateNoteForm() {
                                 <option value="Sports Drink">Sports Drink</option>
                                 <option value="Energy Drink">Energy Drink</option>
                                 <option value="Ice Cream Drink">Ice Cream Drink</option>
-                                <option selected value="Other">Other</option>
+                                <option value="Other">Other</option>
                             </select>
                         </td>
                     </tr>
@@ -132,6 +133,7 @@ export default function CreateNoteForm() {
                             />
                         </td>
                     </tr>
+                    </tbody>
 
                 </table>
 

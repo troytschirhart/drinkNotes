@@ -10,7 +10,7 @@ export default function FrontPage() {
     useEffect(() => {
         async function fetchData() {
             await store.fetchDrinks();
-            console.log("drinks: " + JSON.stringify(store.drinkNotes));
+            store.setShow(false);
         }
         fetchData();
     },[])

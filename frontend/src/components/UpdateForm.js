@@ -35,6 +35,7 @@ export default function UpdateForm () {
             <form onSubmit={handleUpdateNote} className="createNoteForm" >
 
             <table>
+                <tbody>
                     <tr className="inputRow">
                         <td className="tdLabel">Name:&nbsp;&nbsp;</td>
                         <td className="tdInput">
@@ -145,8 +146,9 @@ export default function UpdateForm () {
                             />
                         </td>
                     </tr>
+                    </tbody>
 
-                </table>
+            </table>
 
 
                 {/* <div className="formInput">

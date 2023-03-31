@@ -46,8 +46,9 @@ async function login(req, res) {
         const passwordMatch = bcrypt.compareSync(password, user.password);
         if (!passwordMatch) return res.sendStatus(401);
 
-        // create a jwt token
-        const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;
+        // create a jwt token for this session
+        const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;  // good for 30 days
+        // create a signed token containing the user's id and the experation date
         const token = jwt.sign({ sub: user._id, exp }, process.env.SECRET);
 
         // set the cookie

@@ -33,17 +33,12 @@ const fetchDrinks = async (req, res) => {
 }
 
 const searchDrinks = async (req, res) => {
-    // let searchObj = {...req.params.searchForm, user: req.user._id};
-    // console.log("searchObj: " + JSON.stringify(searchObj));
+    // get the search parameters from the req.body
     const { name, category, type, maker, image, description, rating, notes } = req.body
 
-    console.log("req.body: " + JSON.stringify(req.body));
-
     try {
-        console.log("category: " + category);
-        // find all drinks
-        // const foundDrinks = await Drink.find({user: req.user._id, category: category});
-
+        // create an object to pass to the find function
+        // only include non-empty fields
         let searchObject = {user: req.user._id};
         if (name !== "") {
             searchObject.name = name;
@@ -70,21 +65,10 @@ const searchDrinks = async (req, res) => {
             searchObject.notes = notes;
         }
 
-        console.log("searchObject: " + JSON.stringify(searchObject));
+        console.log("drinksController searchObject: " + JSON.stringify(searchObject));
 
+        // find the drink notes that match the search criteria
         const foundDrinks = await Drink.find(searchObject);
-
-        // const foundDrinks = await Drink.find({
-        //     user: req.user._id, 
-        //     name: name,
-        //     category: category,
-        //     type: type,
-        //     maker: maker,
-        //     image: image,
-        //     description: description,
-        //     rating: rating,
-        //     notes: notes    
-        // });
 
         // respond with the found drinks
         res.json({ foundDrinks });
@@ -96,7 +80,7 @@ const searchDrinks = async (req, res) => {
 
 const fetchDrink = async (req, res) => {
     try {
-        // find the single drink using the drink's id and the user's id 
+        // find a single drink using the drink's id and the user's id 
         const foundDrink = await Drink.findOne({_id: req.params.id, user: req.user._id });
 
         // respond with the drink 
@@ -114,6 +98,8 @@ const updateDrink = async (req, res) => {
 
         // get the data off of the req body;
         const { name, category, type, maker, image, description, rating, notes } = req.body
+
+        console.log("why am i here?");
 
         // find and update the record
         await Drink.findOneAndUpdate({_id: drinkID, user: req.user._id}, {
@@ -134,7 +120,7 @@ const updateDrink = async (req, res) => {
 
 const deleteDrink = async (req, res) => {
     try {
-        // get id from url
+        // get the drink's id from the url
         const drinkID = req.params.id;
 
         // delete the record
@@ -147,7 +133,6 @@ const deleteDrink = async (req, res) => {
         res.sendStatus(400);
     }
 }
-
 
 module.exports = {
     createDrink, fetchDrinks, fetchDrink, updateDrink, deleteDrink, searchDrinks

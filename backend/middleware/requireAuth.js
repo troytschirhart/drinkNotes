@@ -12,7 +12,7 @@ async function requireAuth(req, res, next) {
         // check expiration
         if (Date.now() > decoded.exp) return res.sendStatus(401);
 
-        // find user using decoded sub
+        // find user using the decoded sub
         const user = await User.findById(decoded.sub);
         if (!user) return res.sendStatus(401);
 

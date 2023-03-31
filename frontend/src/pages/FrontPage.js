@@ -16,9 +16,10 @@ export default function FrontPage() {
                 </h3>
 
                 <h3>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After creating an account, the user has the option to add a drink to their collection, 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After creating an account, the user has the option to add a drink to their collection 
                     including the drink name, type of drink, notes about the drink and a rating.&nbsp;&nbsp;Other options
-                    include viewing previously entered drink notes as well as editing or deleting those drink notes.
+                    include viewing previously entered drink notes, editing or deleting those drink notes, searching drink notes,
+                    or viewing example drink notes.
                 </h3>
                 
             </div>

@@ -1,7 +1,6 @@
 import NotesPage from "../pages/NotesPage";
 import LoginPage from "../pages/LoginPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import RequireAuth from "./RequireAuth";
 import SignupPage from "../pages/SignupPage";
 import LogoutPage from "../pages/LogoutPage";
 import FrontPage from "../pages/FrontPage";
@@ -12,6 +11,8 @@ import CreateNotePage from "../pages/CreateNotePage";
 import ViewOneNotePage from "../pages/ViewOneNotePage";
 import EditNotePage from "../pages/EditNotePage";
 import SearchPage from "../pages/SearchPage";
+import ShowExamplesPage from "../pages/ShowExamplesPage";
+import OneExamplePage from "../pages/OneExamplePage";
 
 function App() {
 
@@ -20,11 +21,14 @@ function App() {
 
         <BrowserRouter>
 
-
           <Routes>
 
             {/* not logged in front page */}
             <Route exact path="/" element={<FrontPage /> } />
+
+            {/* logged in front page */}
+            <Route path="/frontpageloggedin" element={<FrontPageLoggedIn />} />  
+            <Route path="/homepage" element={<HomePage />} />
 
             {/* user routes  */}
             <Route path="/signup" element={<SignupPage />} />
@@ -37,15 +41,17 @@ function App() {
             <Route path="/onenote" element={<ViewOneNotePage />} />
             <Route path="/editnote" element={<EditNotePage />} />
 
+            {/* search route */}
             <Route path="/searchpage" element={<SearchPage />} />
-            
 
-            <Route path="/homepage" element={<HomePage />} />
-            <Route path="/frontpageloggedin" element={<FrontPageLoggedIn />} />       
-
+            {/* examples routes */}
+            <Route path="/allexamples" element={<ShowExamplesPage />} />
+            <Route path="/oneexample" element={<OneExamplePage />} />             
 
           </Routes>
+
         </BrowserRouter>     
+
       </div>
   );
 }

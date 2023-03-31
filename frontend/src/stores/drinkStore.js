@@ -43,38 +43,42 @@ const drinkStore = create ((set) => ({
     },
 
     fetchDrinks: async () => {
-        // fetch the notes
-        console.log("about to get drinks");
-        const res = await axios.get(`/drinks`);              // try/catch
+        try {
+            // fetch the notes
+            const res = await axios.get(`/drinks`);      
 
-        // set to state
-        set({
-            drinkNotes: res.data.allDrinks
-        })
-
-        const {drinkNotes} = drinkStore.getState();
-
-        console.log(drinkNotes);
+            // set to state
+            set({
+                drinkNotes: res.data.allDrinks
+            })
+        } catch (err) {
+            console.log(err);
+        }   
     },
 
     searchDrinkNotes: async () => {
+        try {
+            const {searchForm} = drinkStore.getState();
 
-        const {searchForm} = drinkStore.getState();
+            console.log("drinkStore searchForm: " + JSON.stringify(searchForm));
 
-        if (searchForm.category === "All") {
-            searchForm.category = "";
+            if (searchForm.category === "All") {
+                searchForm.category = "";
+            }
+
+            const res = await axios.put(`/drinks/search`, searchForm);
+
+            console.log("res.data.foundDrinks: " + res.data.foundDrinks);
+
+            set({
+                foundNotes: res.data.foundDrinks,
+                showFound: true
+            })
+
+            return res.data.foundDrinks
+        } catch (err) {
+            console.log(err)
         }
-
-        const res = await axios.put(`/drinks/search`, searchForm);
-
-        console.log("res.data.foundDrinks: " + res.data.foundDrinks);
-
-        set({
-            foundNotes: res.data.foundDrinks,
-            showFound: true
-        })
-
-        return res.data.foundDrinks
     },
 
     updateCreateFormField: (e) => {
@@ -93,8 +97,6 @@ const drinkStore = create ((set) => ({
     updateSearchFormField: (e) => {
         const {name, value} = e.target;
 
-        // console.log(name + ": " + value);
-
         set((state) => {
             return {
                 searchForm: {
@@ -111,8 +113,22 @@ const drinkStore = create ((set) => ({
         })
     },
 
+    resetSearchForm: () => {
+        set({
+            searchForm: {
+                name: "", 
+                category: "All", 
+                type: "", 
+                maker: "", 
+                image: "", 
+                description: "", 
+                rating: "", 
+                notes: ""
+            }
+        })
+    },
+
     createDrinkNote: async (e) => {
-        // e.preventDefault();
 
         try {
             // get the createForm and drinkNotes values from state
@@ -120,8 +136,6 @@ const drinkStore = create ((set) => ({
             
             // create the drink note
             const res = await axios.post(`/drinks`, createForm); 
-            
-            console.log("createDrinkNote res.data.drinkNote: " + JSON.stringify(res.data.drinkNote));
         
             // update the state for drinkNotes and clear the form 
             set({
@@ -145,21 +159,21 @@ const drinkStore = create ((set) => ({
     },
 
     deleteDrinkNote: async (_id) => {
-        // const { drinkNotes } = drinkStore.getState();
-        // delete the note
-        await axios.delete(`/drinks/${_id}`);              // try/catch block
+        try {
+            // delete the note
+            await axios.delete(`/drinks/${_id}`);       
 
-        const { drinkNotes } = drinkStore.getState();
-    
-        
-        // update state
-        const newDrinkNotes = drinkNotes.filter((note) => {
-          return note._id !== _id;
-        })
-    
-        console.log("drinkStore.deleteDrinkNote _id: " + _id + " drinkNotes: " + drinkNotes);
+            const { drinkNotes } = drinkStore.getState();
+            
+            // update state
+            const newDrinkNotes = drinkNotes.filter((note) => {
+                return note._id !== _id;
+            })
 
-        set({ drinkNotes: newDrinkNotes });
+            set({ drinkNotes: newDrinkNotes });
+        } catch (err) {
+            console.log(err);
+        }
     },
 
     handleUpdateFieldChange: (e) => {
@@ -176,8 +190,8 @@ const drinkStore = create ((set) => ({
     },
 
     toggleUpdate: ({ _id, name, category, type, maker, image, description, rating, notes }) => {
-        // set state on update form
 
+        // set state on update form
         set({
             updateForm: {
                 _id,
@@ -194,41 +208,43 @@ const drinkStore = create ((set) => ({
     },
 
     updateDrinkNote: async(e) => {
-        // e.preventDefault();
-    
-        const { 
-            updateForm: {_id, name, category, type, maker, image, description, rating, notes},
-            drinkNotes 
-        } = drinkStore.getState();;
-    
-        // send the update request
-        const res = await axios.put(`/drinks/${_id}`, {                                         // try/catch block
-          name, category, type, maker, image, description, rating, notes                        // should these be updateForm.item ???
-        });
-    
-        // update the state
-        const newDrinkNotes = [...drinkNotes];
-        const noteIndex = drinkNotes.findIndex(note => {
-          return note._id === _id;
-        });
-        newDrinkNotes[noteIndex] = res.data.updatedDrink;
+        try {
+            const { 
+                updateForm: {_id, name, category, type, maker, image, description, rating, notes},
+                drinkNotes 
+            } = drinkStore.getState();;
+        
+            // send the update request
+            const res = await axios.put(`/drinks/${_id}`, {                      
+            name, category, type, maker, image, description, rating, notes      
+            });
+        
+            // update the state
+            const newDrinkNotes = [...drinkNotes];
+            const noteIndex = drinkNotes.findIndex(note => {
+                return note._id === _id;
+            });
+            newDrinkNotes[noteIndex] = res.data.updatedDrink;
 
-        set({
-            drinkNotes: newDrinkNotes,
-            updateForm: {
-                _id: null,
-                name: "", 
-                category: "", 
-                type: "", 
-                maker: "", 
-                image: "", 
-                description: "", 
-                rating: "", 
-                notes: ""
-            }
-        })
+            set({
+                drinkNotes: newDrinkNotes,
+                updateForm: {
+                    _id: null,
+                    name: "", 
+                    category: "", 
+                    type: "", 
+                    maker: "", 
+                    image: "", 
+                    description: "", 
+                    rating: "", 
+                    notes: ""
+                }
+            })
 
-        return res.data.updatedDrink;
+            return res.data.updatedDrink;
+        } catch (err) {
+            console.log(err);
+        }
     },
 
 

@@ -7,13 +7,12 @@ export default function SearchForm () {
 
     const handleSearch = async (e) => {
         e.preventDefault();
-        
 
         try {
             const notes = await store.searchDrinkNotes();
-            console.log(JSON.stringify(notes));
-            navigate("/notespage");
 
+            console.log("searchForm: " + JSON.stringify(store.searchForm));
+            navigate("/notespage");
         } catch (err) {
             console.log("searchDrinkNotes error: " + err);
         }

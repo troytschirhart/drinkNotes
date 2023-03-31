@@ -10,8 +10,6 @@ export default function SearchForm () {
 
         try {
             const notes = await store.searchDrinkNotes();
-
-            console.log("searchForm: " + JSON.stringify(store.searchForm));
             navigate("/notespage");
         } catch (err) {
             console.log("searchDrinkNotes error: " + err);

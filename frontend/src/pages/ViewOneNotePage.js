@@ -11,7 +11,6 @@ export default function ViewOneNotePage () {
     const { note } = state || {};
 
     const handleDelete = async () => {
-        console.log("node._id: " + note._id);
         try {
             await store.deleteDrinkNote(note._id);
             navigate('/homepage');

@@ -65,8 +65,6 @@ const searchDrinks = async (req, res) => {
             searchObject.notes = notes;
         }
 
-        console.log("drinksController searchObject: " + JSON.stringify(searchObject));
-
         // find the drink notes that match the search criteria
         const foundDrinks = await Drink.find(searchObject);
 
@@ -98,8 +96,6 @@ const updateDrink = async (req, res) => {
 
         // get the data off of the req body;
         const { name, category, type, maker, image, description, rating, notes } = req.body
-
-        console.log("why am i here?");
 
         // find and update the record
         await Drink.findOneAndUpdate({_id: drinkID, user: req.user._id}, {

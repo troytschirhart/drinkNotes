@@ -53,8 +53,20 @@ export default function UpdateForm () {
                         <tr className="inputRow">
                             <td className="tdLabel">Category:&nbsp;&nbsp;</td>
                             <td className="tdInput">
-                                <select onChange={store.handleUpdateFieldChange} name="category" >
-                                    <option selected={store.updateForm.category==="Beer"} value="Beer">Beer</option>
+                                <select defaultValue={store.updateForm.category} onChange={store.handleUpdateFieldChange} name="category" >
+                                    <option value="Beer">Beer</option>
+                                    <option value="Wine">Wine</option>
+                                    <option value="Cocktail">Cocktail</option>
+                                    <option value="Coffee Drink">Coffee Drink</option>
+                                    <option value="Tea">Tea</option>
+                                    <option value="Soda">Soda</option>
+                                    <option value="Juice">Juice</option>
+                                    <option value="Sports Drink">Sports Drink</option>
+                                    <option value="Energy Drink">Energy Drink</option>
+                                    <option value="Ice Cream Drink">Ice Cream Drink</option>
+                                    <option value="Other">Other</option>
+
+                                    {/* <option selected={store.updateForm.category==="Beer"} value="Beer">Beer</option>
                                     <option selected={store.updateForm.category==="Wine"} value="Wine">Wine</option>
                                     <option selected={store.updateForm.category==="Cocktail"} value="Cocktail">Cocktail</option>
                                     <option selected={store.updateForm.category==="Coffee Drink"} value="Coffee Drink">Coffee Drink</option>
@@ -64,7 +76,7 @@ export default function UpdateForm () {
                                     <option selected={store.updateForm.category==="Sports Drink"} value="Sports Drink">Sports Drink</option>
                                     <option selected={store.updateForm.category==="Energy Drink"} value="Energy Drink">Energy Drink</option>
                                     <option selected={store.updateForm.category==="Ice Cream Drink"} value="Ice Cream Drink">Ice Cream Drink</option>
-                                    <option selected={store.updateForm.category==="Other"} value="Other">Other</option>
+                                    <option selected={store.updateForm.category==="Other"} value="Other">Other</option> */}
                                 </select>
                             </td>
                         </tr>

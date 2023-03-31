@@ -60,15 +60,11 @@ const drinkStore = create ((set) => ({
         try {
             const {searchForm} = drinkStore.getState();
 
-            console.log("drinkStore searchForm: " + JSON.stringify(searchForm));
-
             if (searchForm.category === "All") {
                 searchForm.category = "";
             }
 
             const res = await axios.put(`/drinks/search`, searchForm);
-
-            console.log("res.data.foundDrinks: " + res.data.foundDrinks);
 
             set({
                 foundNotes: res.data.foundDrinks,

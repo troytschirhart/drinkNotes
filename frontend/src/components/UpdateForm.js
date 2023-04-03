@@ -66,17 +66,6 @@ export default function UpdateForm () {
                                     <option value="Ice Cream Drink">Ice Cream Drink</option>
                                     <option value="Other">Other</option>
 
-                                    {/* <option selected={store.updateForm.category==="Beer"} value="Beer">Beer</option>
-                                    <option selected={store.updateForm.category==="Wine"} value="Wine">Wine</option>
-                                    <option selected={store.updateForm.category==="Cocktail"} value="Cocktail">Cocktail</option>
-                                    <option selected={store.updateForm.category==="Coffee Drink"} value="Coffee Drink">Coffee Drink</option>
-                                    <option selected={store.updateForm.category==="Tea"} value="Tea">Tea</option>
-                                    <option selected={store.updateForm.category==="Soda"} value="Soda">Soda</option>
-                                    <option selected={store.updateForm.category==="Juice"} value="Juice">Juice</option>
-                                    <option selected={store.updateForm.category==="Sports Drink"} value="Sports Drink">Sports Drink</option>
-                                    <option selected={store.updateForm.category==="Energy Drink"} value="Energy Drink">Energy Drink</option>
-                                    <option selected={store.updateForm.category==="Ice Cream Drink"} value="Ice Cream Drink">Ice Cream Drink</option>
-                                    <option selected={store.updateForm.category==="Other"} value="Other">Other</option> */}
                                 </select>
                             </td>
                         </tr>

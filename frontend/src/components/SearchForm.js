@@ -9,7 +9,7 @@ export default function SearchForm () {
         e.preventDefault();
 
         try {
-            const notes = await store.searchDrinkNotes();
+            await store.searchDrinkNotes();
             navigate("/notespage");
         } catch (err) {
             console.log("searchDrinkNotes error: " + err);

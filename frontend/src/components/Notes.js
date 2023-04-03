@@ -1,4 +1,3 @@
-import authStore from "../stores/authStore";
 import drinkStore from "../stores/drinkStore"
 import Note from "./Note"
 import FrontHeaderLoggedIn from "../headers/FrontHeaderLoggedIn"
@@ -19,7 +18,7 @@ export default function Notes () {
 
         <FrontHeaderLoggedIn />
 
-        {notesToShow.length == 0 
+        {notesToShow.length === 0 
           ? (<h2 className="noneFound">No Drink Notes Were Found</h2>)
           : <div className="containerContainer">
               {notesToShow &&
@@ -29,7 +28,7 @@ export default function Notes () {
                   )
                 })}
             </div>
-}
+        }
 
       </div>
     )

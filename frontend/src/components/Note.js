@@ -1,9 +1,8 @@
-// import drinkStore from "../stores/drinkStore"
+
 import { useNavigate } from "react-router-dom";
 
 export default function Note({note}) {
     const navigate = useNavigate();
-    // const store = drinkStore();
 
     const handleClick = (note) => {
         navigate("/onenote", {state: {note}});
